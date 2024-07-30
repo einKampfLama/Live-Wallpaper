@@ -1,5 +1,16 @@
 import sys
 import platform
+import cv2
+
+
+def mp4_to_frame(path):
+    vidObj = cv2.VideoCapture(path)
+    count = 0
+    success = 1
+    while success:
+        success, image = vidObj.read()
+        cv2.imwrite("frame%d.jpg" % count, image)
+        count += 1
 
 def set_wallpaper(image_path):
     system = platform.system()
